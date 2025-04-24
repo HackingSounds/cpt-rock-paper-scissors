@@ -1,17 +1,23 @@
 namespace SpriteKind {
     export const State = SpriteKind.create()
 }
-function playGame () {
+function playGame (num: number) {
+    if (true) {
+    	
+    } else if (false) {
+    	
+    } else {
+    	
+    }
     call = game.askForString("rock, paper, or scissors?")
     if (call == "rock") {
-        userMove = 1
+        playerStatus = 1
     } else if (call == "paper") {
-        userMove = 2
+        playerStatus = 2
     } else if (call == "scissors") {
-        userMove = 3
+        playerStatus = 3
     } else {
         game.splash("Error: invalid input", " Please only input \"rock\" \"paper\" or \"scissors\"")
-        playGame()
     }
     for (let value of randomSprites) {
         opposition.setImage(value)
@@ -127,9 +133,9 @@ function playGame () {
             `)
         pause(1000)
     }
-    if (enemyMove == userMove) {
+    if (enemyMove == playerStatus) {
         game.splash("It's a tie!")
-    } else if (enemyMove - 1 == userMove) {
+    } else if (enemyMove - 1 == playerStatus) {
         game.splash("You lost this round!")
         info.changeLifeBy(-1)
     } else {
@@ -141,12 +147,12 @@ function playGame () {
     } else if (info.life() == 0) {
         game.splash("You lost the best of 5 game! Restart the program to play again!")
     } else {
-        playGame()
+    	
     }
 }
 let enemyMove = 0
-let userMove = 0
 let call = ""
+let playerStatus = 0
 let randomSprites: Image[] = []
 let opposition: Sprite = null
 info.setScore(0)
@@ -426,4 +432,5 @@ img`
     ................................
     `
 ]
-playGame()
+playerStatus = info.score()
+playGame(playerStatus)
