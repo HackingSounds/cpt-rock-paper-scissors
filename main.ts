@@ -2,12 +2,12 @@ namespace SpriteKind {
     export const State = SpriteKind.create()
 }
 function playGame (num: number) {
-    if (playerStatus == 0) {
-        tiles.setCurrentTilemap(tilemap`level0`)
-    } else if (playerStatus == 1) {
+    if (pointValue == 0) {
+        tiles.setCurrentTilemap(tilemap`level1`)
+    } else if (pointValue == 1) {
         tiles.setCurrentTilemap(tilemap`level4`)
     } else {
-        tiles.setCurrentTilemap(tilemap`level1`)
+        tiles.setCurrentTilemap(tilemap`level0`)
     }
     call = game.askForString("rock, paper, or scissors?")
     if (call == "rock") {
@@ -147,13 +147,13 @@ function playGame (num: number) {
     } else if (info.life() == 0) {
         game.splash("You lost the best of 5 game! Restart the program to play again!")
     } else {
-        playGame(pointsValue)
+        playGame(pointValue)
     }
 }
 let enemyMove = 0
-let call = ""
 let playerStatus = 0
-let pointsValue = 0
+let call = ""
+let pointValue = 0
 let randomSprites: Image[] = []
 let opposition: Sprite = null
 info.setScore(0)
@@ -432,5 +432,5 @@ img`
     ................................
     `
 ]
-pointsValue = info.score()
-playGame(pointsValue)
+pointValue = info.score()
+playGame(pointValue)
